@@ -13,9 +13,9 @@ public class HelloController {
 	@RequestMapping("/helloYt")
 	public String hell(Model m) throws Exception{
 		m.addAttribute("now",DateFormat.getDateTimeInstance().format(new Date()));
-		if(true){
+		/*if(true){
 			throw new Exception("some Exception");
-		}
+		}*/
 		return "helloYt";
 	}
 }
