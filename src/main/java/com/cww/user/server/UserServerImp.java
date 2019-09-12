@@ -39,7 +39,7 @@ public class UserServerImp implements UserServer{
 				List<Predicate> list = new ArrayList<Predicate>();
 				
 				if(user.getUsername()!=""){        
-                    list.add(cb.equal(root.get("username").as(String.class),user.getUsername()));
+                    list.add(cb.like(root.get("username").as(String.class),"%"+user.getUsername()+"%"));
                 }
 				
 				Predicate[] pre = new Predicate[list.size()];
@@ -51,6 +51,11 @@ public class UserServerImp implements UserServer{
 		},pageable);
 	
 		return new PageResult<User>(us);
+	}
+
+	@Override
+	public User login(User user) {
+		return userDao.getUserByUsernameAndPwd(user.getUsername(),user.getPwd());
 	}
 
 }
