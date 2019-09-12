@@ -9,10 +9,11 @@ public class PageResult<T> {
 	public PageResult(){
 	}
 
-	public PageResult(Page<T> pageResult,PageParameter page){
-		setCurrPage(page.getPage()+1);
+	public PageResult(Page<T> pageResult){
+		setCurrPage(pageResult.getNumber()+1);
 		setRows(pageResult.getContent());
 		setTotal(pageResult.getTotalElements());
+		setTotalPages(pageResult.getTotalPages());
 	}
 	/*
 	 * 结果总数量
@@ -28,6 +29,11 @@ public class PageResult<T> {
 	 * 当前页数 
 	 */
 	private int currPage;
+	
+	/*
+	 * 总页数
+	 */
+	private int totalPages;
 	
 	public int getCurrPage() {
 		return currPage;
@@ -53,5 +59,12 @@ public class PageResult<T> {
 		this.rows = rows;
 	}
 	
+	public int getTotalPages() {
+		return totalPages;
+	}
+
+	public void setTotalPages(int totalPages) {
+		this.totalPages = totalPages;
+	}
 	
 }
