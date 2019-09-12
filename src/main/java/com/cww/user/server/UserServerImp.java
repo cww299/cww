@@ -39,7 +39,7 @@ public class UserServerImp implements UserServer{
 				List<Predicate> list = new ArrayList<Predicate>();
 				
 				if(user.getUsername()!=""){        
-                    list.add(cb.equal(root.get("username").as(String.class),user.getUsername()));
+                    list.add(cb.like(root.get("username").as(String.class),"%"+user.getUsername()+"%"));
                 }
 				
 				Predicate[] pre = new Predicate[list.size()];
