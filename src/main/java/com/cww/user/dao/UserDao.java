@@ -6,4 +6,6 @@ import com.cww.user.pojo.User;
 
 public interface UserDao extends BaseDao<User>{
 
+	User getUserByUsernameAndPwd(String username, String pwd);
+
 }

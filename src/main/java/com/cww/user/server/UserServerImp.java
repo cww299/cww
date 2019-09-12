@@ -53,4 +53,9 @@ public class UserServerImp implements UserServer{
 		return new PageResult<User>(us);
 	}
 
+	@Override
+	public User login(User user) {
+		return userDao.getUserByUsernameAndPwd(user.getUsername(),user.getPwd());
+	}
+
 }
