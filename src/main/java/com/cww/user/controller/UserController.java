@@ -31,7 +31,6 @@ public class UserController {
 	@ResponseBody
 	public CommonResponse login(User user) throws Exception{
 		CommonResponse cr = new CommonResponse();
-		System.out.println(user.getUsername());
 		User u = userServer.login(user);
 		if(u!=null){
 			cr.setData(u);
