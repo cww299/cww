@@ -59,8 +59,12 @@ public class UserController {
 	@ResponseBody
 	public CommonResponse saveUser(User user) throws Exception{
 		CommonResponse cr = new CommonResponse();
+		String msg = "修改成功";
+		if(user.getId()==null)
+			msg = "新增成功";
 		userDao.save(user);
-		cr.setMsg("修改成功");
+		cr.setData(user);
+		cr.setMsg(msg);
 		return cr;
 	}
 	
