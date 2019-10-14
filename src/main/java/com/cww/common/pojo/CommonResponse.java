@@ -1,5 +1,8 @@
 package com.cww.common.pojo;
 
+import java.util.HashMap;
+import java.util.Map;
+
 public class CommonResponse {
 	
 	public static final int SUCCESS_CODE = 0;
@@ -54,5 +57,18 @@ public class CommonResponse {
 
 	public void setTimestamp(Long timestamp) {
 		this.timestamp = timestamp;
+	}
+	
+	/**
+	 * 转化成Map对象。
+	 * @return Bean对应的Map对象。
+	 */
+	public Map<String,Object> toMap() {
+		Map<String,Object> map = new HashMap<String,Object>();
+		map.put("code", getCode());
+		map.put("msg", getMsg());
+		map.put("timestamp", getTimestamp());
+		map.put("data", getData());
+		return map;
 	}
 }
