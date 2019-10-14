@@ -55,4 +55,12 @@ public class UserController {
 		cr.setMsg("修改成功");
 		return cr;
 	}
+	
+	@RequestMapping("/deleteUser")
+	@ResponseBody
+	public CommonResponse deleteUser(String ids) throws Exception{
+		CommonResponse cr = new CommonResponse();
+		cr.setMsg("成功删除："+userServer.deleteUser(ids)+"条用户信息");
+		return cr;
+	}
 }
