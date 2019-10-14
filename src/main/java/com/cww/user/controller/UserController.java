@@ -21,6 +21,9 @@ public class UserController {
 	@Autowired
 	private UserDao userDao;
 	
+	/*
+	 * 分页查找用户
+	 */
 	@RequestMapping("/listUserPage")
 	@ResponseBody
 	public CommonResponse listUser(PageParameter page,User user) throws Exception{
@@ -30,7 +33,9 @@ public class UserController {
         cr.setMsg("查询成功");
 		return cr;
 	}
-	
+	/*
+	 * 登录
+	 */
 	@RequestMapping("/login")
 	@ResponseBody
 	public CommonResponse login(User user) throws Exception{
@@ -47,15 +52,25 @@ public class UserController {
 		return cr;
 	}
 	
+	/*
+	 * 新增、修改用户
+	 */
 	@RequestMapping("/saveUser")
 	@ResponseBody
 	public CommonResponse saveUser(User user) throws Exception{
 		CommonResponse cr = new CommonResponse();
+		String msg = "修改成功";
+		if(user.getId()==null)
+			msg = "新增成功";
 		userDao.save(user);
-		cr.setMsg("修改成功");
+		cr.setData(user);
+		cr.setMsg(msg);
 		return cr;
 	}
 	
+	/*
+	 * 删除用户
+	 */
 	@RequestMapping("/deleteUser")
 	@ResponseBody
 	public CommonResponse deleteUser(String ids) throws Exception{
