@@ -12,4 +12,6 @@ public interface UserServer {
 	public PageResult<User> findPage(User user,PageParameter page);
 
 	public User login(User user);
+	
+	public int deleteUser(String ids);
 }

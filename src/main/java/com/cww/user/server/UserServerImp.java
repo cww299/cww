@@ -58,4 +58,15 @@ public class UserServerImp implements UserServer{
 		return userDao.getUserByUsernameAndPwd(user.getUsername(),user.getPwd());
 	}
 
+	@Override
+	public int deleteUser(String ids) {
+		String arrIds[] = ids.split(",");
+		int successNum = 0;
+		for(String i : arrIds){
+			userDao.delete(Long.parseLong(i));
+			successNum++;
+		}
+		return successNum;
+	}
+
 }
